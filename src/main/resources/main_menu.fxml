@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    FXML file for the initial scene of the Battleship game.
+    This scene displays a background image and a text prompt instructing the user to start the game by pressing any key.
+-->
+
+<!-- Import statements for the required JavaFX classes -->
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<!-- Root container: AnchorPane used to position child elements -->
+<AnchorPane id="root" onKeyPressed="#startGame" prefHeight="800.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.com.battleship.controller.SceneController">
+   <!-- Background image view -->
+   <ImageView fitHeight="800.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@img/Battleship.png"/>
+   </ImageView>
+   <!-- Text overlay -->
+   <Text accessibleText="Press any key to start" fill="WHITE" layoutX="98.0" layoutY="777.0" strokeType="OUTSIDE"
+         strokeWidth="0.0" text="PRESS ANY KEY TO START">
+      <!-- Font settings for the text -->
+      <font>
+         <Font size="35.0"/>  <!-- Sets the font size to 35 -->
+      </font>
+   </Text>
+</AnchorPane>

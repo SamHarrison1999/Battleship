@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Root element of the Maven POM -->
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- Specify the POM model version -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Define project metadata -->
+    <groupId>org.com</groupId> <!-- Unique identifier for the project group -->
+    <artifactId>Battleship</artifactId> <!-- Name of the project -->
+    <version>1.0-SNAPSHOT</version> <!-- Project version -->
+    <name>Battleship</name> <!-- Display name of the project -->
+
+    <!-- Properties to define key settings and reusable variables -->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> <!-- Character encoding -->
+        <javafx.version>24-ea+15</javafx.version> <!-- JavaFX version -->
+        <javafx-maven-plugin.version>0.0.8</javafx-maven-plugin.version> <!-- JavaFX Maven plugin version -->
+        <controlsfx.version>11.2.1</controlsfx.version> <!-- ControlsFX library version -->
+        <validatorfx.version>0.5.1</validatorfx.version> <!-- ValidatorFX library version -->
+        <ikonli.version>12.3.1</ikonli.version> <!-- Ikonli library for icons -->
+        <fxgl.version>21.1</fxgl.version> <!-- FXGL gaming library version -->
+        <maven-compiler.version>3.13.0</maven-compiler.version> <!-- Maven Compiler Plugin version -->
+        <slf4j.version>2.1.0-alpha1</slf4j.version> <!-- SLF4J logging library version -->
+        <log4j.version>3.0.0-beta2</log4j.version> <!-- Apache Log4j version -->
+        <disruptor.version>4.0.0</disruptor.version> <!-- Disruptor library version -->
+        <datafx.version>8.0.7</datafx.version> <!-- DataFX library version -->
+    </properties>
+
+    <!-- Define dependencies for the project -->
+    <dependencies>
+        <!-- JavaFX Controls library -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+
+        <!-- JavaFX FXML library for UI markup -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+
+        <!-- JavaFX Media library -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-media</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+
+        <!-- ControlsFX library for enhanced UI components -->
+        <dependency>
+            <groupId>org.controlsfx</groupId>
+            <artifactId>controlsfx</artifactId>
+            <version>${controlsfx.version}</version>
+        </dependency>
+
+        <!-- ValidatorFX library for input validation -->
+        <dependency>
+            <groupId>net.synedra</groupId>
+            <artifactId>validatorfx</artifactId>
+            <version>${validatorfx.version}</version>
+            <!-- Exclude redundant JavaFX dependencies -->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.openjfx</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- Ikonli library for icons -->
+        <dependency>
+            <groupId>org.kordamp.ikonli</groupId>
+            <artifactId>ikonli-javafx</artifactId>
+            <version>${ikonli.version}</version>
+        </dependency>
+
+        <!-- FXGL gaming library -->
+        <dependency>
+            <groupId>com.github.almasb</groupId>
+            <artifactId>fxgl</artifactId>
+            <version>${fxgl.version}</version>
+            <!-- Exclude redundant JavaFX dependencies -->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.openjfx</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- Apache Log4j API for logging -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
+        <!-- Apache Log4j Core for logging -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
+        <!-- DataFX library for advanced JavaFX features -->
+        <dependency>
+            <groupId>io.datafx</groupId>
+            <artifactId>datafx</artifactId>
+            <version>${datafx.version}</version>
+        </dependency>
+    </dependencies>
+
+    <!-- Build configuration for the project -->
+    <build>
+        <plugins>
+            <!-- Maven Compiler Plugin for specifying the Java version -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler.version}</version>
+                <configuration>
+                    <source>23</source> <!-- Source compatibility -->
+                    <target>23</target> <!-- Target compatibility -->
+                </configuration>
+            </plugin>
+
+            <!-- JavaFX Maven Plugin for running and packaging JavaFX applications -->
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>${javafx-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <!-- Configuration for running the application -->
+                        <id>default-cli</id>
+                        <configuration>
+                            <mainClass>org.com.battleship/org.com.battleship.Main</mainClass> <!-- Main class -->
+                            <launcher>app</launcher> <!-- Application launcher -->
+                            <jlinkZipName>app</jlinkZipName> <!-- Name of the JLink zip -->
+                            <jlinkImageName>app</jlinkImageName> <!-- Name of the JLink image -->
+                            <noManPages>true</noManPages> <!-- Exclude manual pages -->
+                            <stripDebug>true</stripDebug> <!-- Remove debug symbols -->
+                            <noHeaderFiles>true</noHeaderFiles> <!-- Exclude header files -->
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
