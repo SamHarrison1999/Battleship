@@ -34,7 +34,7 @@ To get started with the Battleship game, follow the instructions below:
 
 1. **Clone the repository**
   ```bash
-git clone https://github.com/your-username/battleship.git
+git clone https://github.com/SamHarrison1999/Battleship.git
 cd battleship
 ```
 2. **Build the project**
